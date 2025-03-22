@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanka K | Full Stack Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e09cfb85ca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+    <!-- Header Section with Animated Background -->
+    <div id="header">
+        <div class="container">
+            <nav id="navbar">
+                <img src="./Images/Logo.jpg" class="logo" alt="Priyanka Logo" onerror="this.onerror=null; this.src='fallback.jpg';">
+                <ul id="sidemenu">
+                    <li><a href="#header" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closeMenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openMenu()"></i>
+            </nav>
+            <div class="header-text" data-aos="fade-right" data-aos-duration="1500">
+                <p>FullStack Developer | Python Developer | Generative AI</p>
+                <h1>Hi, I'm <span class="highlight-text">Konduru Priyanka</span></h1>
+                <h2 class="typewriter">Building <span id="changing-text">Intelligent Solutions</span></h2>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+                <a href="#contact" class="btn">Let's Connect</a>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </div>
+
+    <!-- About Section with Animated Elements -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="./Images/ProfileImage.jpg" alt="Priyanka Image" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="experience-badge">
+                        <span class="number">3+</span>
+                        <span class="text">Years Experience</span>
+                    </div>
+                </div>
+                <div class="about-col-2" data-aos="fade-left" data-aos-duration="1000">
+                    <h1 class="sub-title">About Me</h1>
+                    <p class="about-description">
+                        I am a passionate <strong>Full Stack Developer, Python Developer, and Generative AI Enthusiast</strong> based in Bangalore. 
+                        I specialize in creating innovative solutions that combine powerful backend systems with intuitive user interfaces.
+                        With a focus on AI integration, I love building intelligent, scalable, and user-friendly applications that solve real-world problems.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="openTab('skills')">Skills</p>
+                        <p class="tab-links" onclick="openTab('projects')">Projects</p>
+                        <p class="tab-links" onclick="openTab('education')">Education</p>
+                        <p class="tab-links" onclick="openTab('experience')">Experience</p>
+                    </div>
+
+                    <div class="tab-contents active-tab" id="skills">
+                        <div class="skills-container">
+                            <div class="skill-category">
+                                <h3>Frontend</h3>
+                                <div class="skill-item">
+                                    <span>HTML/CSS</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>JavaScript</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>React</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3>Backend</h3>
+                                <div class="skill-item">
+                                    <span>Python</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Flask/Django</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Node.js</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3>AI/ML</h3>
+                                <div class="skill-item">
+                                    <span>LLMs</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Computer Vision</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>NLP</span>
+                                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-contents" id="projects">
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <div class="project-icon"><i class="fas fa-robot"></i></div>
+                                <h3>AI Pose Generator</h3>
+                                <p>AI-driven pose generation tool using Python & OpenCV with real-time tracking capabilities.</p>
+                                <div class="project-tags">
+                                    <span>Python</span>
+                                    <span>OpenCV</span>
+                                    <span>AI</span>
+                                </div>
+                                <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-icon"><i class="fas fa-sign-language"></i></div>
+                                <h3>Virtual Sign Language Translator</h3>
+                                <p>Real-time sign language translation tool using machine learning and computer vision.</p>
+                                <div class="project-tags">
+                                    <span>TensorFlow</span>
+                                    <span>Computer Vision</span>
+                                    <span>Flask</span>
+                                </div>
+                                <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="project-card">
+                                <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                                <h3>AI Sentiment Analysis for Brand Logos</h3>
+                                <p>NLP-based sentiment analysis tool that evaluates consumer perception of brand logos.</p>
+                                <div class="project-tags">
+                                    <span>NLP</span>
+                                    <span>Python</span>
+                                    <span>React</span>
+                                </div>
+                                <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-contents" id="education">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>B.Tech - Computer Science</h3>
+                                    <h4>Presidency University, Bangalore</h4>
+                                    <p>2018 - 2022</p>
+                                    <p>Specialized in AI and Machine Learning with a GPA of 3.8/4.0</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Google Cloud AI Certification</h3>
+                                    <h4>Google Cloud</h4>
+                                    <p>2022</p>
+                                    <p>Comprehensive training in cloud-based AI solutions and implementations</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Advanced Machine Learning Specialization</h3>
+                                    <h4>Simplilearn</h4>
+                                    <p>2023</p>
+                                    <p>Focused on practical applications of machine learning algorithms</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-contents" id="experience">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Full Stack Developer</h3>
+                                    <h4>TechSolutions Inc.</h4>
+                                    <p>2022 - Present</p>
+                                    <p>Developing scalable web applications with React and Node.js. Led the implementation of AI features that increased user engagement by 45%.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Python Developer Intern</h3>
+                                    <h4>InnovateAI Labs</h4>
+                                    <p>2021 - 2022</p>
+                                    <p>Developed machine learning models for computer vision applications. Created a sign language recognition system with 92% accuracy.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>Research Assistant</h3>
+                                    <h4>Presidency University AI Lab</h4>
+                                    <p>2020 - 2021</p>
+                                    <p>Assisted in research on natural language processing and sentiment analysis. Co-authored a paper on efficient text classification methods.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section with Hover Effects -->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title" data-aos="fade-up" data-aos-duration="1000">My Services</h1> 
+            <div class="services-list" data-aos="fade-up" data-aos-duration="1200">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                    <h2>FullStack Development</h2>
+                    <p>Creating seamless web applications with React, Node.js, and databases. From concept to deployment, I build responsive and scalable solutions tailored to your needs.</p>
+                    <ul class="service-features">
+                        <li>Responsive Web Design</li>
+                        <li>API Development & Integration</li>
+                        <li>Database Architecture</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                    <a href="#" class="btn-service">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-brands fa-python"></i></div>
+                    <h2>Python Development</h2>
+                    <p>Developing scalable applications with Flask, Django, and AI-powered solutions. Specialized in creating efficient backend systems with clean, maintainable code.</p>
+                    <ul class="service-features">
+                        <li>Custom Web Applications</li>
+                        <li>Data Processing Pipelines</li>
+                        <li>Automation Solutions</li>
+                        <li>RESTful API Development</li>
+                    </ul>
+                    <a href="#" class="btn-service">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h2>Generative AI</h2>
+                    <p>Building AI-driven chatbots, AI-generated content tools, and automation solutions. Leveraging cutting-edge models to create intelligent, adaptive systems.</p>
+                    <ul class="service-features">
+                        <li>LLM Implementation</li>
+                        <li>Custom AI Solutions</li>
+                        <li>Computer Vision Applications</li>
+                        <li>NLP & Text Analytics</li>
+                    </ul>
+                    <a href="#" class="btn-service">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section with Filtered Gallery -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title" data-aos="fade-up" data-aos-duration="1000">My Work</h1>
+            <div class="portfolio-filter" data-aos="fade-up" data-aos-duration="1000">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="fullstack">FullStack</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="ai">Generative AI</button>
+            </div>
+            <div class="work-list" data-aos="fade-up" data-aos-duration="1200">
+                <div class="work-item fullstack">
+                    <img src="./Images/Fullstack image.jpg" alt="Fullstack Work" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>E-commerce Platform</h3>
+                            <p>Full-stack development with React and Node.js</p>
+                            <a href="#" class="btn-work">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item fullstack">
+                    <img src="https://via.placeholder.com/600x400" alt="Fullstack Project" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Finance Dashboard</h3>
+                            <p>Interactive analytics platform with data visualization</p>
+                            <a href="#" class="btn-work">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item python">
+                    <img src="./Images/python.jpg" alt="Python Work" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Data Analytics Tool</h3>
+                            <p>Python-based data processing and visualization</p>
+                            <a href="#" class="btn-work">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item python">
+                    <img src="https://via.placeholder.com/600x400" alt="Python Project" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Automated Testing System</h3>
+                            <p>Python script for automated QA processes</p>
+                            <a href="#" class="btn-work">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item ai">
+                    <img src="./Images/Gen ai image.jpg" alt="Generative AI Work" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>AI Image Generator</h3>
+                            <p>Deep learning model for creating custom imagery</p>
+                            <a href="#" class="btn-work">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-item ai">
+                    <img src="https://via.placeholder.com/600x400" alt="AI Project" onerror="this.onerror=null; this.src='fallback.jpg';">
+                    <div class="work-overlay">
+                        <div class="work-info">
+                            <h3>Recommendation Engine</h3>
+                            <p>AI-powered content recommendation system</p>
+                            <a href="#" class="btn-work">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn-view-more">View More Projects</a>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div id="testimonials">
+        <div class="container">
+            <h1 class="sub-title" data-aos="fade-up" data-aos-duration="1000">What Clients Say</h1>
+            <div class="testimonial-container" data-aos="fade-up" data-aos-duration="1200">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Priyanka delivered an exceptional AI solution that transformed our customer service operations. Her technical skills and innovative approach exceeded our expectations.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://via.placeholder.com/60x60" alt="Client" onerror="this.onerror=null; this.src='fallback.jpg';">
+                                <div>
+                                    <h3>Rahul Sharma</h3>
+                                    <p>CTO, TechInnovate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Working with Priyanka on our web application was a fantastic experience. She has a deep understanding of both frontend and backend technologies, which resulted in a seamless product.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://via.placeholder.com/60x60" alt="Client" onerror="this.onerror=null; this.src='fallback.jpg';">
+                                <div>
+                                    <h3>Ananya Patel</h3>
+                                    <p>Founder, DigitalSolutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <i class="fas fa-quote-left"></i>
+                                <p>The Python automation system that Priyanka built for us has saved countless hours of manual work. Her code is clean, well-documented, and incredibly efficient.</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://via.placeholder.com/60x60" alt="Client" onerror="this.onerror=null; this.src='fallback.jpg';">
+                                <div>
+                                    <h3>Vikram Malhotra</h3>
+                                    <p>Product Manager, DataSystems</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fas fa-paper-plane"></i> contact@priyankaportfolio.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 9876543210</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <a href="./Images/myresume.pdf" download class="btn btn-resume">Download Resume</a>
+                </div>
+                <div class="contact-right" data-aos="fade-left" data-aos-duration="1000">
+                    <form id="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="subject" placeholder="Subject" required>
+                        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-submit">Submit <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div id="form-status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="./Images/Logo.jpg" alt="Priyanka Logo" onerror="this.onerror=null; this.src='fallback.jpg';">
+                </div>
+                <div class="footer-links">
+                    <a href="#header">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Konduru Priyanka. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#header" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

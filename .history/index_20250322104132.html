@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konduru Priyanka - Dynamic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f6f9;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #1a1a2e;
+            color: #e4e6eb;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: #2d46b9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, #2d46b9, #6b728e);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2d46b9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        #preloader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #fff;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 25px 0;
+            transition: background 0.3s;
+        }
+
+        .header.dark-mode {
+            background: rgba(26, 26, 46, 0.95);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d46b9;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-links a {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1e1e2c;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .nav-links a {
+            color: #e4e6eb;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: #4d5eff;
+            bottom: -10px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45, 70, 185, 0.8), rgba(30, 30, 44, 0.8));
+            z-index: 0;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            background: #4d5eff;
+            color: white;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.4s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: #2d46b9;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            background: url('https://source.unsplash.com/random/1920x1080/?abstract') no-repeat center/cover fixed;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 246, 249, 0.9);
+            z-index: 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 70px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image img {
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, #e4e6eb, #f4f6f9);
+        }
+
+        .dark-mode .skills {
+            background: linear-gradient(135deg, #1a1a2e, #2a2a3c);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .dark-mode .skill-card {
+            background: #2a2a3c;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-progress {
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #2d46b9, #4d5eff);
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: url('https://source.unsplash.com/random/1920x1080/?code') no-repeat center/cover fixed;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 246, 249, 0.85);
+            z-index: 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .dark-mode .project-card {
+            background: #2a2a3c;
+        }
+
+        .project-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.12);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-link {
+            color: #2d46b9;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #4d5eff;
+        }
+
+        /* Published Section */
+        .published {
+            background: linear-gradient(135deg, #f4f6f9, #e4e6eb);
+        }
+
+        .dark-mode .published {
+            background: linear-gradient(135deg, #2a2a3c, #1a1a2e);
+        }
+
+        .published-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .published-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s;
+        }
+
+        .dark-mode .published-card {
+            background: #2a2a3c;
+        }
+
+        .published-card:hover {
+            transform: translateY(-15px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: url('https://source.unsplash.com/random/1920x1080/?contact') no-repeat center/cover fixed;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(244, 246, 249, 0.9);
+            z-index: 0;
+        }
+
+        .contact-form {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .dark-mode .contact-form {
+            background: #2a2a3c;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #2d46b9;
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2d46b9;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            .dark-mode .nav-links {
+                background: #2a2a3c;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .hamburger span {
+                display: block;
+                width: 40px;
+                height: 5px;
+                background: #1e1e2c;
+                margin: 8px 0;
+                transition: all 0.3s;
+            }
+
+            .dark-mode .hamburger span {
+                background: #e4e6eb;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(10px, -10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Priyanka</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#published">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div id="particles-js"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Konduru Priyanka</h1>
+            <p class="hero-subtitle">FullStack Developer | Python Wizard | Generative AI Innovator</p>
+            <a href="./Images/Konduru_Priyanka_Resume.pdf" class="btn" download>Download Resume</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="./Images/image.jpg" alt="Priyanka" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <p>Hello! I’m <strong>Konduru Priyanka</strong>, a passionate FullStack Developer and Generative AI enthusiast based in Bangalore. With a B.Tech in Computer Science from Presidency University and certifications in AI/ML from Google Cloud and Simplilearn, I specialize in building innovative, scalable solutions.</p>
+                    <p>My work spans AI-driven tools, full-stack applications, and cutting-edge research. I’m always exploring new ways to push technology forward—let’s create something amazing together!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>FullStack Development</h3>
+                    <div class="skill-progress"><div class="skill-progress-bar" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <div class="skill-progress"><div class="skill-progress-bar" style="width: 95%;"></div></div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Generative AI</h3>
+                    <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-react"></i>
+                    <h3>React</h3>
+                    <div class="skill-progress"><div class="skill-progress-bar" style="width: 88%;"></div></div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-node-js"></i>
+                    <h3>Node.js</h3>
+                    <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Integration</h3>
+                    <div class="skill-progress"><div class="skill-progress-bar" style="width: 90%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="./Images/pos.jpg" alt="AI Pose Generator" loading="lazy">
+                    <div class="project-content">
+                        <h3>AI Pose Generator</h3>
+                        <p>AI-driven tool generating 1000+ human poses using Python and OpenCV.</p>
+                        <a href="https://snazzy-malasada-5040f2.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/vir.jpg" alt="Sign Language Translator" loading="lazy">
+                    <div class="project-content">
+                        <h3>Virtual Sign Language Translator</h3>
+                        <p>Real-time sign language translation with AI for 500+ users.</p>
+                        <a href="https://rococo-gumdrop-8b74f4.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/sentiment.jpg" alt="Sentiment Analysis" loading="lazy">
+                    <div class="project-content">
+                        <h3>AI Sentiment Analysis</h3>
+                        <p>NLP-based sentiment analysis tool with 90% accuracy for brand logos.</p>
+                        <a href="https://flourishing-pie-6bfd73.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/ai story.jpg" alt="AI Story Generator" loading="lazy">
+                    <div class="project-content">
+                        <h3>AI Story Generator</h3>
+                        <p>Dynamic storytelling tool using Gemini AI API and React.js.</p>
+                        <a href="https://dainty-lolly-e1e8cd.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/AI_Chatbot.jpg" alt="AI Chatbot" loading="lazy">
+                    <div class="project-content">
+                        <h3>AI Chatbot</h3>
+                        <p>AI chatbot using LLMs for real-time assistance.Implemented
+                            React.js and OpenAI API to create a dynamic user experience</p>
+                        <a href="https://poetic-cactus-770c2d.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/text sum.jpg" alt="AI Text Summarizer" loading="lazy">
+                    <div class="project-content">
+                        <h3>AI Text Summarizer</h3>
+                        <p>Built a text-to-text summarization tool using Hugging Face transformers.Optimized AI models
+                            to generate concise and accurate summaries.Deployed on Hugging Face Spaces for easy access</p>
+                        <a href="https://huggingface.co/spaces/Priya008/Text_Summarizer" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Published Section -->
+    <section id="published" class="section published">
+        <div class="container">
+            <h2 class="section-title">Publications & Achievements</h2>
+            <div class="published-grid">
+                
+                <div class="published-card">
+                    <img src="./Images/AI_CROP_WEBSITE.jpg" alt="AI Crop Recommendation System" loading="lazy">
+                    <h3>Research Paper</h3>
+                    <p>"Crop Recommendation System Using Machine Learning" - IJRTI, 2025.</p>
+                    <a href="https://github.com/kondurupriyanka/AI-Crop-Recommendation/blob/main/research_paper_priyanka.jpg" target="_blank" class="project-link">View Publication <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <form class="contact-form">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+                <input type="email" class="form-control" placeholder="Your Email" required>
+                <textarea class="form-control" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('fade-out');
+            setTimeout(() => preloader.style.display = 'none', 500);
+        });
+
+        // Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100 },
+                size: { value: 4 },
+                move: { speed: 5 },
+                color: { value: '#ffffff' },
+                line_linked: { enable: true, color: '#ffffff', opacity: 0.4 }
+            },
+            interactivity: {
+                events: { onhover: { enable: true, mode: 'repulse' } }
+            }
+        });
+
+        // GSAP Animations
+        gsap.from('.hero-title', { opacity: 0, y: 60, duration: 1.2, delay: 0.5 });
+        gsap.from('.hero-subtitle', { opacity: 0, y: 60, duration: 1.2, delay: 0.8 });
+        gsap.from('.btn', { opacity: 0, y: 60, duration: 1.2, delay: 1.1 });
+
+        // ScrollTrigger Animations
+        gsap.utils.toArray('.section').forEach(section => {
+            gsap.from(section.querySelector('.section-title'), {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            gsap.from(section.querySelectorAll('.skill-card, .project-card, .published-card'), {
+                opacity: 0,
+                y: 70,
+                stagger: 0.2,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Dark Mode Toggle
+        const toggle = document.createElement('div');
+        toggle.className = 'theme-toggle';
+        toggle.innerHTML = '<i class="fas fa-moon"></i>';
+        document.body.appendChild(toggle);
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            toggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            toggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Back to Top
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanka Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e09cfb85ca.js" crossorigin="anonymous"></script>
+    <style>
+        /* Basic styles for active link and tab functionality */
+        .active-link {
+            color: #ff6347; /* Tomato color for active link */
+            font-weight: bold;
+        }
+        .tab-contents {
+            display: none; /* Hide all tab contents by default */
+        }
+        .active-tab {
+            display: block; /* Show active tab content */
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="./Images/Logo.jpg" class="logo" alt="Priyanka Logo" onerror="this.onerror=null; this.src='fallback.jpg';">
+                <ul>
+                    <li><a href="#header" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>FullStack Developer | Python Developer | Generative AI</p>
+                <h1>Hi, I'm <span>Konduru Priyanka</span><br>From Bangalore</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="./Images/ProfileImage.jpg" alt="Priyanka Image" onerror="this.onerror=null; this.src='fallback.jpg';">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>
+                        I am a passionate <strong>Full Stack Developer, Python Developer, and Generative AI Enthusiast</strong>.  
+                        I love building intelligent, scalable, and user-friendly applications.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="openTab('skills')">Skills</p>
+                        <p class="tab-links" onclick="openTab('projects')">Projects</p>
+                        <p class="tab-links" onclick="openTab('education')">Education</p>
+                    </div>
+
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>FullStack Development</span><br>Frontend, Backend Developer</li>
+                            <li><span>Python Developer</span><br>Flask, Web Development</li>
+                            <li><span>Generative AI</span><br>AI Integration, LLMs</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="projects">
+                        <ul>
+                            <li><span>AI Pose Generator</span> - AI-driven pose generation tool using Python & OpenCV. <a href="#">(Project Link)</a></li>
+                            <li><span>Virtual Sign Language Translator</span> - Real-time sign language translation tool using AI. <a href="#">(Project Link)</a></li>
+                            <li><span>AI Sentiment Analysis for Brand Logos</span> - NLP-based sentiment analysis tool. <a href="#">(Project Link)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>B.Tech - Computer Science</span> - Presidency University, Bangalore</li>
+                            <li><span>AI/ML Certifications</span> - Google Cloud, Simplilearn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1> 
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>FullStack Development</h2>
+                    <p>Creating seamless web applications with React, Node.js, and databases.</p>
+                    <a href="#">Explore More</a>
+                </div>
+                
+                <div>
+                    <i class="fa-brands fa-python"></i>
+                    <h2>Python Development</h2>
+                    <p>Developing scalable applications with Flask, Django, and AI-powered solutions.</p>
+                    <a href="#">Explore More</a>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-brain"></i>
+                    <h2>Generative AI</h2>
+                    <p>Building AI-driven chatbots, AI-generated content tools, and automation solutions.</p>
+                    <a href="#">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title-work">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="./Images/Fullstack image.jpg" alt="Fullstack Work" onerror="this.onerror=null; this.src='fallback.jpg';">
+                </div>
+                <div class="work">
+                    <img src="./Images/python.jpg" alt="Python Work" onerror="this.onerror=null; this.src='fallback.jpg';">
+                </div>
+                <div class="work">
+                    <img src="./Images/Gen ai image.jpg" alt="Generative AI Work" onerror="this.onerror=null; this.src='fallback.jpg';">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <h1 class="sub-title">Contact Me</h1>
+            <!-- Add your contact form or details here -->
+        </div>
+    </div>
+
+    <script>
+        // Tab Functionality (Existing)
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function openTab(tabname) {
+            for (let tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (let tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor behavior
+                const targetId = this.getAttribute('href').substring(1); // Get the section ID
+                const targetSection = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop, // Scroll to the section's top
+                    behavior: 'smooth' // Smooth scrolling effect
+                });
+            });
+        });
+
+        // Active Section Highlighting on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('div[id]'); // All sections with an ID
+            const navLinks = document.querySelectorAll('.nav-link'); // All navigation links
+
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 60) { // 60px offset for better visibility
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').substring(1) === currentSection) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
